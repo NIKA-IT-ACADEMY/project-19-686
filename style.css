@@ -70,10 +70,74 @@ header {
   box-shadow: 1px 1px 10px var(--accent-color);
 }
 
+/* burger menu styles */
+#burgerId {
+  display: none;
+}
+
+.burgerBtn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  z-index: 99;
+}
+
+.burgerBtn span {
+  background-color: var(--accent-color);
+  width: 30px;
+  height: 3px;
+  border-radius: 1px;
+  transition: all 0.25s;
+}
+
+#burgerId:checked + .burgerBtn .span1 {
+  transform: rotate(45deg) translateX(11.2px);
+}
+#burgerId:checked + .burgerBtn .span2 {
+  opacity: 0;
+}
+#burgerId:checked + .burgerBtn .span3 {
+  transform: rotate(-45deg) translateX(11.7px);
+}
+
+.mobile-nav {
+  background-color: #fff;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.25s;
+}
+
+.mobile-nav .nav-list {
+  flex-direction: column;
+}
+
+#burgerId:checked ~ .mobile-nav {
+  transform: translateX(0);
+}
+
+/* --------------------------------------- */
+
 main {
   flex-grow: 1;
 }
 
 footer {
   height: 160px;
+}
+
+/* responsive styles */
+
+@media (max-width: 640px) {
+  .nav {
+    display: none;
+  }
+
+  .burgerBtn {
+    display: flex;
+  }
 }
